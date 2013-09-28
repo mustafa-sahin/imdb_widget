@@ -1,2 +1,19 @@
-<h1>Home#index</h1>
-<p>So much work to do...</p>
+<%= form_tag(find_path, method: "get") do %>
+	<div class="table-responsive">
+	  <div class="my_aligned_form">
+		<div class="row">
+		  <div class="col-lg-6">
+		    <div class="input-group">
+		      <label class="sr-only" for="url">Public Rating URL</label>
+			    <div>
+			      <%= text_field_tag :ratings, nil, :placeholder => "http://www.imdb.com/user/ur27065058/ratings", :class => "form-control" %>
+			    </div>
+		      <span class="input-group-btn">
+		      	<%= link_to 'Find!', '#', class: "btn btn-default", :onclick => "window.location.href = '/find?address='+ $('#ratings').val();" %>
+		      </span>
+		    </div><!-- /input-group -->
+		  </div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
+		</div>
+	  </div>
+<% end %>

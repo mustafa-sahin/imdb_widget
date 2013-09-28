@@ -1,5 +1,6 @@
 IMDbWidget::Application.routes.draw do
   get "home/index"
+  match '/find', to: 'home#find'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
