@@ -1,24 +1,42 @@
 <div class="table-responsive">
-  <div class="found_alignment">
-  	<table class="table table-bordered table-condensed widget">
-  	  <% @titles.each do |tt| %>
-  	  	<tr>
-  	  	  <td rowspan="4" width="70">
-  	  	    <%= link_to image_tag(tt.poster, size: "80x105"), "http://www.imdb.com/title/tt#{tt.id}/", :target => "_blank" %>
-  	  	    &nbsp;
-  	  	    <p class="text-center text-muted">(<%= tt.rating %>)</p>
-  	  	  </td>
-  	  	</tr>
-  	  	<tr>
-  	  	  <td>
-  	  	    <%= link_to tt.title, "http://www.imdb.com/title/tt#{tt.id}/", :target => "_blank" %>
-  	  	    <p class="text-muted" style="display: inline;">(<%= tt.year %>)</p>
-  	  	    <p class="text-muted" style="display: inline;">(<%= tt.length %> min)</p>
-  	  	  </td>
-  	  	</tr>
-  	  	<tr><td>col3</td></tr>
-  	  	<tr><td>col4</td></tr>
-  	  <% end %>
-  	</table>
+  <div class="widget1_alignment">
+    <div class="widget1">
+      <strong>
+        <p class="text-center"><%= link_to @user_name, @user_href, :target => "_blank" %>'s last ratings</p>
+      </strong>
+  	  <table class="table table-condensed">
+  	    <% @movies.each do |index, movie| %>
+  	  	  <tr class="last_tr">
+  	  	    <td rowspan="4" width="70" class="first_td">
+  	  	      <%= link_to image_tag(movie[:poster], size: "80x105"), movie[:url], :target => "_blank" %>
+  	  	      &nbsp;
+  	  	      <div class="star-box giga-star">
+  	  	        <div class="titlePageSprite star-box-giga-star">&nbsp;<%= movie[:rating] %></div>
+  	  	      </div>
+  	  	    </td>
+  	  	    <td>
+  	  	      <%= link_to movie[:title], movie[:url], :target => "_blank" %>
+  	  	      <p class="text-muted" style="display: inline;">(<%= movie[:year] %>)</p>
+  	  	      <p class="text-muted" style="display: inline;">(<%= movie[:length] %> min)</p>
+  	  	    </td>
+  	  	  </tr>
+  	  	  <tr><td><small>Director: <%= link_to movie[:director], movie[:director_url], :target => "_blank" %></small></td></tr>
+  	  	  <tr>
+  	  	    <td>
+  	  	      <small>Stars: <%= link_to movie[:star1], movie[:star1_url], :target => "_blank" %>,
+  	  	                    <%= link_to movie[:star2], movie[:star2_url], :target => "_blank" %>,
+  	  	                    <%= link_to movie[:star3], movie[:star3_url], :target => "_blank" %>
+  	  	      </small> 
+  	  	    </td>
+  	  	  </tr>
+  	  	  <tr class="last_tr">
+  	  	    <td>
+  	  	      <small><em><%= movie[:plot] %></em></small>
+  	  	    </td>
+  	  	  </tr>
+  	    <% end %>
+  	  </table>
+  	  <p class="text-center text-muted"><em>Developed by <%= link_to "Mshn", "http://rekursifdusunce.blogspot.com", :target => "_blank" %></em></p>
+  	</div>
   </div>
 </div>
