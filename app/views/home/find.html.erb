@@ -1,8 +1,24 @@
-<br />
-<table class="table table-hover">
-	<% @ttIds.each do |tt| %>
-		<tr><td><%= tt %></td></tr>
-	<% end %>
-</table>
-
-<br />
+<div class="table-responsive">
+  <div class="found_alignment">
+  	<table class="table table-bordered table-condensed widget">
+  	  <% @titles.each do |tt| %>
+  	  	<tr>
+  	  	  <td rowspan="4" width="70">
+  	  	    <%= link_to image_tag(tt.poster, size: "80x105"), "http://www.imdb.com/title/tt#{tt.id}/", :target => "_blank" %>
+  	  	    &nbsp;
+  	  	    <p class="text-center text-muted">(<%= tt.rating %>)</p>
+  	  	  </td>
+  	  	</tr>
+  	  	<tr>
+  	  	  <td>
+  	  	    <%= link_to tt.title, "http://www.imdb.com/title/tt#{tt.id}/", :target => "_blank" %>
+  	  	    <p class="text-muted" style="display: inline;">(<%= tt.year %>)</p>
+  	  	    <p class="text-muted" style="display: inline;">(<%= tt.length %> min)</p>
+  	  	  </td>
+  	  	</tr>
+  	  	<tr><td>col3</td></tr>
+  	  	<tr><td>col4</td></tr>
+  	  <% end %>
+  	</table>
+  </div>
+</div>
