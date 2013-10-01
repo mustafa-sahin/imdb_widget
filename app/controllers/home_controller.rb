@@ -13,10 +13,10 @@ class HomeController < ApplicationController
     i = 0
     ids.each do |tt|
       movie = Imdb::Movie.new(tt[0])
-      star1_url = "http://www.imdb.com/"<< movie.cast_member_ids[0]
-      star2_url = "http://www.imdb.com/"<< movie.cast_member_ids[1]
-      star3_url = "http://www.imdb.com/"<< movie.cast_member_ids[2]
-      movie_url = "http://www.imdb.com/tt" << tt[0]
+      star1_url = "http://www.imdb.com/name/"<< movie.cast_member_ids[0]
+      star2_url = "http://www.imdb.com/name/"<< movie.cast_member_ids[1]
+      star3_url = "http://www.imdb.com/name/"<< movie.cast_member_ids[2]
+      movie_url = "http://www.imdb.com/title/tt" << tt[0]
       poster = movie.poster.nil? ? "/assets/film.png" : movie.poster
       @movies[i] = {:id => movie.id, :url => movie_url, :title => movie.title, :poster => poster, :plot => movie.plot,
                     :rating => movie.rating, :year => movie.year, :length => movie.length, :director => movie.director[0],
