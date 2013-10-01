@@ -17,7 +17,8 @@ class HomeController < ApplicationController
       star2_url = "http://www.imdb.com/"<< movie.cast_member_ids[1]
       star3_url = "http://www.imdb.com/"<< movie.cast_member_ids[2]
       movie_url = "http://www.imdb.com/tt" << tt[0]
-      @movies[i] = {:id => movie.id, :url => movie_url, :title => movie.title, :poster => movie.poster, :plot => movie.plot,
+      poster = movie.poster.nil? ? "/assets/film.png" : movie.poster
+      @movies[i] = {:id => movie.id, :url => movie_url, :title => movie.title, :poster => poster, :plot => movie.plot,
                     :rating => movie.rating, :year => movie.year, :length => movie.length, :director => movie.director[0],
                     :director_url => tt[1], :star1 => movie.cast_members[0], :star2 => movie.cast_members[1],
                     :star3 => movie.cast_members[2], :star1_url => star1_url, :star2_url => star2_url, :star3_url => star3_url}
@@ -40,7 +41,7 @@ class HomeController < ApplicationController
             ids << [title_id, director_url]
           end
         end
-        return ids if ids.size == 5 # just fetching first five movies for widget
+        return ids if ids.size == 3 # just fetching first five movies for widget
       end
     end
     ids
